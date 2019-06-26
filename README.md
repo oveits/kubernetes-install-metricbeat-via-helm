@@ -1,1 +1,1 @@
-# kubernetes-install-elasticsearch-via-helm
+# kubernetes-install-metricbeat-via-helm
