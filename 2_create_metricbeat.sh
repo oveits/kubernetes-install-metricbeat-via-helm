@@ -68,7 +68,7 @@ case $CMD in
     helm install stable/metricbeat --name ${RELEASE} $OPTIONS
     ;;
   "upgrade") 
-    helm upgrade --install ${RELEASE} stable/metricbeat $OPTIONS
+    helm upgrade --install --force ${RELEASE} stable/metricbeat $OPTIONS
     ;;
   "template")
     helm $CMD ../charts/stable/metricbeat $OPTIONS
