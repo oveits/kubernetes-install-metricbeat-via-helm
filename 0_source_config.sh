@@ -1,3 +1,4 @@
-[ "$RELEASE" == "" ] && RELEASE=metricbeat-v1
+[ "$RELEASE" == "" ] && RELEASE=metricbeat
 [ "$NAMESPACE" == "" ] && NAMESPACE=metricbeat
+[ "$PERIOD" == "" ] && PERIOD=1m
 
