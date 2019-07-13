@@ -39,10 +39,6 @@ daemonset:
             # - core
             # - diskio
             # - socket
-          processes: ['.*']
-          process.include_top_n:
-            by_cpu: 5      # include top 5 processes by CPU
-            by_memory: 5   # include top 5 processes by memory
         - module: system
           period: ${PERIOD_LONG}
           metricsets:
@@ -50,6 +46,10 @@ daemonset:
             - filesystem
             - process
             - process_summary
+          processes: ['.*']
+          process.include_top_n:
+            by_cpu: 5      # include top 5 processes by CPU
+            by_memory: 5   # include top 5 processes by memory
     kubernetes:
       enabled: true
       config:
@@ -62,10 +62,10 @@ daemonset:
             - volume
           period: ${PERIOD}
           host: ${NODE_NAME}
-          hosts: ["127.0.0.1:10255"]
+          #hosts: ["127.0.0.1:10255"]
           # If using Red Hat OpenShift remove the previous hosts entry and
           # uncomment these settings:
-          #hosts: ["https://${HOSTNAME}:10250"]
+          hosts: ["https://${HOSTNAME}:10250"]
           # OV added; see https://discuss.elastic.co/t/metricbeat-kubernetes-module/91850/3
           #ssl.certificate_authorities: ["ca.pem"]
           #ssl.certificate: "abc.pem"
