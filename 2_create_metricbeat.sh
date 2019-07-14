@@ -3,8 +3,8 @@
 CMD=$1
 [ "$CMD" == "" ] && CMD=upgrade
 
-if [ "$CMD" != "install" ] && [ "$CMD" != "template" ] && [ "$CMD" != "delete" ] && [ "$CMD" != "del" ] && [ "$CMD" != "upgrade" ]; then
-  echo "usage: bash $0 [install|upgrade|delete|template]"
+if [ "$CMD" != "install" ] && [ "$CMD" != "template" ] && [ "$CMD" != "delete" ] && [ "$CMD" != "del" ] && [ "$CMD" != "upgrade" ] && [ "$CMD" != "status" ]; then
+  echo "usage: bash $0 [install|upgrade|delete|status|template]"
   exit 1
 fi 
 
@@ -33,6 +33,9 @@ case $CMD in
     ;;
   "upgrade") 
     helm upgrade --install --force ${RELEASE} stable/metricbeat --namespace ${NAMESPACE} --values ./values.yaml
+    ;;
+  "status")
+    helm status ${RELEASE}
     ;;
   "template")
     helm $CMD ../charts/stable/metricbeat --namespace ${NAMESPACE} --values ./values.yaml
