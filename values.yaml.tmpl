@@ -13,6 +13,8 @@ daemonset:
   nodeSelector: {}
   resources: {}
   config:
+    setup.template.name: "metricbeat"
+    setup.template.pattern: "metricbeat-*"
     output.file:
       enabled: false
     output.elasticsearch:
@@ -82,6 +84,8 @@ deployment:
   nodeSelector: {}
   resources: {}
   config:
+    setup.template.name: "metricbeat"
+    setup.template.pattern: "metricbeat-*"
     output.file:
       enabled: false
     output.elasticsearch:
