@@ -17,6 +17,7 @@ daemonset:
       enabled: false
     output.elasticsearch:
       enabled: true
+      index: "metricbeat-%{[agent.version]}-%{+yyyy.MM.dd}"
       hosts:
         - ${ELASTIC_SEARCH_HOST}:${ELASTIC_SEARCH_PORT}
     metricbeat.config:
@@ -36,6 +37,7 @@ daemonset:
             - load
             - memory
             - network
+          interfaces: [eth0,eth1,weave]
             # - core
             # - diskio
             # - socket
@@ -84,6 +86,7 @@ deployment:
       enabled: false
     output.elasticsearch:
       enabled: true
+      index: "metricbeat-%{[agent.version]}-%{+yyyy.MM.dd}"
       hosts:
         - ${ELASTIC_SEARCH_HOST}:${ELASTIC_SEARCH_PORT}
   modules:
